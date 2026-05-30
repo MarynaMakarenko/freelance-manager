@@ -48,7 +48,7 @@ export default function Sidebar({ userName, userRole }: SidebarProps) {
       {/* App name */}
       <div className="px-5 pt-6 pb-4">
         <span className="text-[15px] font-semibold text-[#1D1D1F] tracking-tight">
-          Freelance Manager
+          Frely
         </span>
       </div>
 

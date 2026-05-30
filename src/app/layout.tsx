@@ -10,7 +10,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Freelance Manager',
+  title: 'Frely',
   description: 'Manage your freelance business — clients, projects, time tracking, and invoices in one place.',
 }
 

@@ -72,7 +72,7 @@ export default function RegisterPage() {
             </svg>
           </div>
           <h1 className="text-[24px] font-bold text-[#1D1D1F] tracking-tight">Create Account</h1>
-          <p className="text-[15px] text-[#6E6E73] mt-1">Freelance Manager</p>
+          <p className="text-[15px] text-[#6E6E73] mt-1">Frely</p>
         </div>
 
         {/* Form card */}
