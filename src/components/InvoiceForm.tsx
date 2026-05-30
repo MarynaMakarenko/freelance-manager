@@ -89,9 +89,9 @@ export default function InvoiceForm({ defaultValues, clients, projects, onSubmit
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-1">Client</label>
+          <label className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">Client</label>
           <select
-            className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all"
             {...register('clientId')}
           >
             <option value="">Select client...</option>
@@ -101,9 +101,9 @@ export default function InvoiceForm({ defaultValues, clients, projects, onSubmit
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-1">Project</label>
+          <label className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">Project</label>
           <select
-            className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all"
             {...register('projectId')}
           >
             <option value="">Select project...</option>
@@ -117,8 +117,8 @@ export default function InvoiceForm({ defaultValues, clients, projects, onSubmit
       {/* Line items */}
       <div>
         <div className="flex items-center justify-between mb-3">
-          <label className="block text-sm font-medium text-slate-700">Line Items *</label>
-          {errors.items && <span className="text-xs text-red-600">{errors.items.message}</span>}
+          <label className="block text-[13px] font-medium text-[#1D1D1F]">Line Items *</label>
+          {errors.items && <span className="text-[12px] text-[#FF3B30]">{errors.items.message}</span>}
         </div>
 
         <div className="space-y-3">
@@ -127,11 +127,11 @@ export default function InvoiceForm({ defaultValues, clients, projects, onSubmit
               <div className="col-span-5">
                 <input
                   placeholder="Description"
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] placeholder:text-[#AEAEB2] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all"
                   {...register(`items.${index}.description`)}
                 />
                 {errors.items?.[index]?.description && (
-                  <p className="text-xs text-red-600 mt-1">{errors.items[index]?.description?.message}</p>
+                  <p className="text-[12px] text-[#FF3B30] mt-1">{errors.items[index]?.description?.message}</p>
                 )}
               </div>
               <div className="col-span-2">
@@ -139,7 +139,7 @@ export default function InvoiceForm({ defaultValues, clients, projects, onSubmit
                   type="number"
                   step="0.01"
                   placeholder="Qty"
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] placeholder:text-[#AEAEB2] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all"
                   {...register(`items.${index}.quantity`, {
                     valueAsNumber: true,
                     onChange: () => handleRateOrQtyChange(index),
@@ -151,7 +151,7 @@ export default function InvoiceForm({ defaultValues, clients, projects, onSubmit
                   type="number"
                   step="0.01"
                   placeholder="Rate"
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] placeholder:text-[#AEAEB2] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all"
                   {...register(`items.${index}.rate`, {
                     valueAsNumber: true,
                     onChange: () => handleRateOrQtyChange(index),
@@ -164,7 +164,7 @@ export default function InvoiceForm({ defaultValues, clients, projects, onSubmit
                   step="0.01"
                   placeholder="Amount"
                   readOnly
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm bg-slate-50 text-slate-600"
+                  className="w-full bg-[#F5F5F7] rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#AEAEB2] opacity-70"
                   {...register(`items.${index}.amount`, { valueAsNumber: true })}
                 />
               </div>
@@ -173,7 +173,7 @@ export default function InvoiceForm({ defaultValues, clients, projects, onSubmit
                   type="button"
                   onClick={() => remove(index)}
                   disabled={fields.length === 1}
-                  className="p-1.5 text-red-500 hover:bg-red-50 rounded disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="p-1.5 text-[#AEAEB2] hover:text-[#FF3B30] hover:bg-[#FF3B30]/8 rounded-[8px] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                 >
                   <Trash2 size={16} />
                 </button>
@@ -195,15 +195,15 @@ export default function InvoiceForm({ defaultValues, clients, projects, onSubmit
       </div>
 
       {/* Total */}
-      <div className="bg-slate-50 rounded-lg px-4 py-3 flex justify-between items-center">
-        <span className="text-sm font-medium text-slate-700">Total</span>
-        <span className="text-xl font-bold text-blue-600">${total.toFixed(2)}</span>
+      <div className="bg-[#F5F5F7] rounded-[10px] px-4 py-3 flex justify-between items-center">
+        <span className="text-[13px] font-medium text-[#1D1D1F]">Total</span>
+        <span className="text-xl font-bold text-[#0066CC]">${total.toFixed(2)}</span>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-1">Notes</label>
+        <label className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">Notes</label>
         <textarea
-          className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] placeholder:text-[#AEAEB2] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all resize-none"
           rows={3}
           placeholder="Payment terms, bank details, etc."
           {...register('notes')}

@@ -93,8 +93,8 @@ export default function ProjectsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Projects</h1>
-          <p className="text-slate-500 mt-1">{projects.length} {showArchived ? 'archived' : 'active'} projects</p>
+          <h1 className="text-[28px] font-bold text-[#1D1D1F] tracking-tight">Projects</h1>
+          <p className="text-[15px] text-[#6E6E73] mt-1">{projects.length} {showArchived ? 'archived' : 'active'} projects</p>
         </div>
         <Button onClick={() => setIsCreateOpen(true)}>
           <Plus size={16} />
@@ -105,18 +105,18 @@ export default function ProjectsPage() {
       {/* Filters */}
       <div className="flex flex-wrap gap-3">
         <div className="relative flex-1 min-w-[200px]">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#AEAEB2]" />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search projects..."
-            className="w-full pl-9 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+            className="w-full bg-[#F5F5F7] border-0 rounded-[10px] pl-9 pr-4 py-2.5 text-[14px] text-[#1D1D1F] placeholder:text-[#AEAEB2] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all"
           />
         </div>
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+          className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all"
         >
           <option value="">All Statuses</option>
           <option value="ACTIVE">Active</option>
@@ -127,7 +127,7 @@ export default function ProjectsPage() {
         <select
           value={clientFilter}
           onChange={(e) => setClientFilter(e.target.value)}
-          className="px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+          className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all"
         >
           <option value="">All Clients</option>
           {clients.map((c) => (
@@ -136,8 +136,10 @@ export default function ProjectsPage() {
         </select>
         <button
           onClick={() => setShowArchived(!showArchived)}
-          className={`flex items-center gap-2 px-3 py-2 border rounded-lg text-sm transition-colors ${
-            showArchived ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-300 bg-white text-slate-600 hover:bg-slate-50'
+          className={`flex items-center gap-2 px-3 py-1.5 text-[13px] rounded-full border transition-colors ${
+            showArchived
+              ? 'border-[#0066CC]/25 bg-[#0066CC]/10 text-[#0066CC] font-medium'
+              : 'border-black/[0.08] bg-white text-[#6E6E73] hover:bg-[#F5F5F7]'
           }`}
         >
           <Archive size={16} />
@@ -151,10 +153,10 @@ export default function ProjectsPage() {
           <Spinner />
         </div>
       ) : projects.length === 0 ? (
-        <div className="text-center py-16 text-slate-400">
-          <FolderKanban size={48} className="mx-auto mb-4 opacity-30" />
-          <p className="text-lg font-medium text-slate-600">No projects found</p>
-          <p className="text-sm mt-1">Create your first project to get started</p>
+        <div className="text-center py-16">
+          <FolderKanban size={48} className="mx-auto mb-4 text-[#AEAEB2] opacity-30" />
+          <p className="text-[16px] font-medium text-[#1D1D1F]">No projects found</p>
+          <p className="text-[14px] text-[#6E6E73] mt-1">Create your first project to get started</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -170,21 +172,21 @@ export default function ProjectsPage() {
           <Input label="Project Name *" placeholder="Website Redesign" error={errors.name?.message} {...register('name')} />
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Description</label>
-            <textarea className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" rows={3} placeholder="Project description..." {...register('description')} />
+            <label className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">Description</label>
+            <textarea className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all resize-none" rows={3} placeholder="Project description..." {...register('description')} />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Client</label>
-              <select className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" {...register('clientId')}>
+              <label className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">Client</label>
+              <select className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all" {...register('clientId')}>
                 <option value="">No client</option>
                 {clients.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Status</label>
-              <select className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" {...register('status')}>
+              <label className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">Status</label>
+              <select className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all" {...register('status')}>
                 <option value="ACTIVE">Active</option>
                 <option value="ON_HOLD">On Hold</option>
                 <option value="COMPLETED">Completed</option>
@@ -199,8 +201,8 @@ export default function ProjectsPage() {
           </div>
 
           {createMutation.isError && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-sm text-red-700">{createMutation.error?.message}</p>
+            <div className="p-3 bg-[#FF3B30]/8 rounded-[10px]">
+              <p className="text-[13px] text-[#FF3B30]">{createMutation.error?.message}</p>
             </div>
           )}
 

@@ -121,13 +121,13 @@ export default function TimerPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Time Tracker</h1>
-        <p className="text-slate-500 mt-1">Track time spent on your projects and tasks</p>
+        <h1 className="text-[28px] font-bold text-[#1D1D1F] tracking-tight">Time Tracker</h1>
+        <p className="text-[15px] text-[#6E6E73] mt-1">Track time spent on your projects and tasks</p>
       </div>
 
       {/* Active timer */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">Current Timer</h2>
+      <div className="bg-white rounded-2xl border border-black/[0.06] shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] p-6">
+        <h2 className="text-[17px] font-semibold text-[#1D1D1F] mb-4">Current Timer</h2>
 
         {activeLoading ? (
           <div className="flex justify-center py-4">
@@ -145,11 +145,11 @@ export default function TimerPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Project</label>
+                <label className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">Project</label>
                 <select
                   value={selectedProjectId}
                   onChange={(e) => handleProjectChange(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                  className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all"
                 >
                   <option value="">Select project...</option>
                   {(projects as Project[]).map((p) => (
@@ -158,12 +158,12 @@ export default function TimerPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Task</label>
+                <label className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">Task</label>
                 <select
                   value={selectedTaskId}
                   onChange={(e) => setSelectedTaskId(e.target.value)}
                   disabled={!selectedProjectId}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white disabled:bg-slate-50"
+                  className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all disabled:opacity-50"
                 >
                   <option value="">Select task...</option>
                   {availableTasks.map((t) => (
@@ -185,7 +185,7 @@ export default function TimerPage() {
             </Button>
 
             {startMutation.isError && (
-              <p className="text-sm text-red-600">{startMutation.error?.message}</p>
+              <p className="text-[13px] text-[#FF3B30]">{startMutation.error?.message}</p>
             )}
           </div>
         )}
@@ -193,39 +193,39 @@ export default function TimerPage() {
 
       {/* Session History */}
       <div>
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">Session History</h2>
+        <h2 className="text-[17px] font-semibold text-[#1D1D1F] mb-4">Session History</h2>
 
         {sessionsLoading ? (
           <div className="flex justify-center py-8">
             <Spinner />
           </div>
         ) : completedSessions.length === 0 ? (
-          <div className="text-center py-10 text-slate-400">
-            <Clock size={40} className="mx-auto mb-3 opacity-30" />
-            <p>No completed sessions yet</p>
+          <div className="text-center py-10">
+            <Clock size={40} className="mx-auto mb-3 text-[#AEAEB2] opacity-30" />
+            <p className="text-[14px] text-[#6E6E73]">No completed sessions yet</p>
           </div>
         ) : (
-          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+          <div className="bg-white rounded-2xl border border-black/[0.06] shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-slate-200 bg-slate-50">
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Task</th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Project</th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Date</th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Duration</th>
+                <tr className="border-b border-black/[0.05] bg-[#FAFAFA]">
+                  <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Task</th>
+                  <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Project</th>
+                  <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Date</th>
+                  <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Duration</th>
                   <th className="px-6 py-3"></th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-black/[0.04]">
                 {completedSessions.map((session) => (
-                  <tr key={session.id} className="hover:bg-slate-50 transition-colors">
-                    <td className="px-6 py-4 text-sm font-medium text-slate-900">{session.task.name}</td>
-                    <td className="px-6 py-4 text-sm text-slate-600">{session.task.project.name}</td>
-                    <td className="px-6 py-4 text-sm text-slate-600">
+                  <tr key={session.id} className="hover:bg-[#F5F5F7] transition-colors">
+                    <td className="px-6 py-4 text-[14px] font-medium text-[#1D1D1F]">{session.task.name}</td>
+                    <td className="px-6 py-4 text-[14px] text-[#6E6E73]">{session.task.project.name}</td>
+                    <td className="px-6 py-4 text-[14px] text-[#6E6E73]">
                       {new Date(session.startedAt).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4">
-                      <span className="text-sm font-mono font-medium text-blue-700">
+                      <span className="font-mono text-[14px] font-medium text-[#0066CC]">
                         {formatDuration(session.duration)}
                       </span>
                     </td>
@@ -234,7 +234,7 @@ export default function TimerPage() {
                         onClick={() => {
                           if (confirm('Delete this session?')) deleteMutation.mutate(session.id)
                         }}
-                        className="p-1.5 text-slate-300 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                        className="p-1.5 text-[#AEAEB2] hover:text-[#FF3B30] hover:bg-[#FF3B30]/8 rounded-[8px] transition-colors"
                       >
                         <Trash2 size={14} />
                       </button>

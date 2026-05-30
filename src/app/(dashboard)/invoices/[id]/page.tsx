@@ -149,8 +149,8 @@ export default function InvoiceDetailPage() {
   if (!invoice) {
     return (
       <div className="text-center py-12">
-        <p className="text-slate-500">Invoice not found</p>
-        <Link href="/dashboard/invoices" className="text-blue-600 hover:underline mt-2 inline-block">
+        <p className="text-[14px] text-[#6E6E73]">Invoice not found</p>
+        <Link href="/dashboard/invoices" className="text-[#0066CC] hover:underline mt-2 inline-block">
           Back to Invoices
         </Link>
       </div>
@@ -165,18 +165,18 @@ export default function InvoiceDetailPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/dashboard/invoices"
-            className="p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+            className="p-2 rounded-[8px] text-[#AEAEB2] hover:text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors"
           >
             <ArrowLeft size={18} />
           </Link>
           <div>
             <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold text-slate-900">Invoice #{invoice.number}</h1>
+              <h1 className="text-[28px] font-bold text-[#1D1D1F] tracking-tight">Invoice #{invoice.number}</h1>
               <Badge variant={getStatusBadgeVariant(invoice.status)} size="md">
                 {invoice.status}
               </Badge>
             </div>
-            <p className="text-slate-500 mt-1">Created {new Date(invoice.createdAt).toLocaleDateString()}</p>
+            <p className="text-[15px] text-[#6E6E73] mt-1">Created {new Date(invoice.createdAt).toLocaleDateString()}</p>
           </div>
         </div>
 
@@ -211,15 +211,15 @@ export default function InvoiceDetailPage() {
       </div>
 
       {/* Invoice preview */}
-      <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+      <div className="bg-white rounded-2xl border border-black/[0.06] shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] overflow-hidden">
         {/* Invoice header */}
-        <div className="bg-blue-600 px-8 py-6">
+        <div className="bg-[#0066CC] px-8 py-6">
           <div className="flex justify-between items-start">
             <div>
               <h2 className="text-2xl font-bold text-white">INVOICE</h2>
-              <p className="text-blue-200 mt-1">#{invoice.number}</p>
+              <p className="text-white/70 mt-1">#{invoice.number}</p>
             </div>
-            <div className="text-right text-blue-100 text-sm">
+            <div className="text-right text-white/80 text-[14px]">
               <p>Date: {new Date(invoice.createdAt).toLocaleDateString()}</p>
               {invoice.dueDate && (
                 <p className="mt-1">Due: {new Date(invoice.dueDate).toLocaleDateString()}</p>
@@ -235,52 +235,52 @@ export default function InvoiceDetailPage() {
           {/* Client info */}
           {invoice.client && (
             <div className="mb-8">
-              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Bill To</p>
-              <p className="font-semibold text-slate-900">{invoice.client.name}</p>
-              {invoice.client.company && <p className="text-slate-600">{invoice.client.company}</p>}
-              {invoice.client.email && <p className="text-slate-600">{invoice.client.email}</p>}
-              {invoice.client.phone && <p className="text-slate-600">{invoice.client.phone}</p>}
+              <p className="text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider mb-2">Bill To</p>
+              <p className="text-[14px] font-medium text-[#1D1D1F]">{invoice.client.name}</p>
+              {invoice.client.company && <p className="text-[14px] text-[#6E6E73]">{invoice.client.company}</p>}
+              {invoice.client.email && <p className="text-[14px] text-[#6E6E73]">{invoice.client.email}</p>}
+              {invoice.client.phone && <p className="text-[14px] text-[#6E6E73]">{invoice.client.phone}</p>}
             </div>
           )}
 
           {/* Items table */}
           <table className="w-full mb-6">
             <thead>
-              <tr className="border-b-2 border-blue-600">
-                <th className="text-left text-sm font-semibold text-slate-700 pb-3">Description</th>
-                <th className="text-center text-sm font-semibold text-slate-700 pb-3">Qty</th>
-                <th className="text-right text-sm font-semibold text-slate-700 pb-3">Rate</th>
-                <th className="text-right text-sm font-semibold text-slate-700 pb-3">Amount</th>
+              <tr className="border-b-2 border-[#0066CC]">
+                <th className="text-left text-[14px] font-semibold text-[#1D1D1F] pb-3">Description</th>
+                <th className="text-center text-[14px] font-semibold text-[#1D1D1F] pb-3">Qty</th>
+                <th className="text-right text-[14px] font-semibold text-[#1D1D1F] pb-3">Rate</th>
+                <th className="text-right text-[14px] font-semibold text-[#1D1D1F] pb-3">Amount</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-black/[0.04]">
               {invoice.items.map((item) => (
                 <tr key={item.id}>
-                  <td className="py-3 text-sm text-slate-800">{item.description}</td>
-                  <td className="py-3 text-sm text-slate-600 text-center">{item.quantity}</td>
-                  <td className="py-3 text-sm text-slate-600 text-right">${item.rate.toFixed(2)}</td>
-                  <td className="py-3 text-sm font-medium text-slate-800 text-right">${item.amount.toFixed(2)}</td>
+                  <td className="py-3 text-[14px] text-[#1D1D1F]">{item.description}</td>
+                  <td className="py-3 text-[14px] text-[#6E6E73] text-center">{item.quantity}</td>
+                  <td className="py-3 text-[14px] text-[#6E6E73] text-right">${item.rate.toFixed(2)}</td>
+                  <td className="py-3 text-[14px] font-medium text-[#1D1D1F] text-right">${item.amount.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>
             <tfoot>
-              <tr className="border-t-2 border-blue-600">
-                <td colSpan={3} className="pt-4 text-right font-bold text-slate-900">Total</td>
-                <td className="pt-4 text-right font-bold text-xl text-blue-600">${total.toFixed(2)}</td>
+              <tr className="border-t-2 border-[#0066CC]">
+                <td colSpan={3} className="pt-4 text-right font-bold text-[#1D1D1F]">Total</td>
+                <td className="pt-4 text-right font-bold text-xl text-[#0066CC]">${total.toFixed(2)}</td>
               </tr>
             </tfoot>
           </table>
 
           {invoice.notes && (
-            <div className="bg-slate-50 rounded-xl p-4">
-              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Notes</p>
-              <p className="text-sm text-slate-700">{invoice.notes}</p>
+            <div className="bg-[#F5F5F7] rounded-xl p-4">
+              <p className="text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider mb-1">Notes</p>
+              <p className="text-[14px] text-[#6E6E73]">{invoice.notes}</p>
             </div>
           )}
 
           {sendMutation.isSuccess && (
-            <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-              <p className="text-sm text-green-700">{(sendMutation.data as { message?: string })?.message}</p>
+            <div className="mt-4 flex items-center gap-2 p-3 bg-[#34C759]/10 rounded-[10px]">
+              <p className="text-[13px] text-[#1a7a35]">{(sendMutation.data as { message?: string })?.message}</p>
             </div>
           )}
         </div>

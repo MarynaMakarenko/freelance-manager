@@ -70,23 +70,23 @@ export default function AdminPage() {
 
   if (!authorized) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-[#F5F5F7]">
         <Spinner size="lg" />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6 md:p-8">
+    <div className="min-h-screen bg-[#F5F5F7] p-6 md:p-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-purple-600 rounded-xl">
+          <div className="p-2 bg-[#AF52DE] rounded-xl">
             <Shield size={22} className="text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Admin Panel</h1>
-            <p className="text-slate-500 mt-0.5">Platform management and user administration</p>
+            <h1 className="text-[28px] font-bold text-[#1D1D1F] tracking-tight">Admin Panel</h1>
+            <p className="text-[15px] text-[#6E6E73] mt-0.5">Platform management and user administration</p>
           </div>
         </div>
 
@@ -106,33 +106,33 @@ export default function AdminPage() {
 
         {/* Users table */}
         <div>
-          <h2 className="text-lg font-semibold text-slate-900 mb-4">All Users</h2>
+          <h2 className="text-[17px] font-semibold text-[#1D1D1F] mb-4">All Users</h2>
           {usersLoading ? (
             <div className="flex justify-center py-8">
               <Spinner />
             </div>
           ) : (
-            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+            <div className="bg-white rounded-2xl border border-black/[0.06] shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] overflow-hidden">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-slate-200 bg-slate-50">
-                    <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">User</th>
-                    <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Role</th>
-                    <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Projects</th>
-                    <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Clients</th>
-                    <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Invoices</th>
-                    <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Joined</th>
-                    <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Status</th>
+                  <tr className="border-b border-black/[0.05] bg-[#FAFAFA]">
+                    <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">User</th>
+                    <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Role</th>
+                    <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Projects</th>
+                    <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Clients</th>
+                    <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Invoices</th>
+                    <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Joined</th>
+                    <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Status</th>
                     <th className="px-6 py-3"></th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-black/[0.04]">
                   {users.map((user) => (
-                    <tr key={user.id} className={`hover:bg-slate-50 transition-colors ${user.isBlocked ? 'bg-red-50/30' : ''}`}>
+                    <tr key={user.id} className={`hover:bg-[#F5F5F7] transition-colors ${user.isBlocked ? 'bg-[#FF3B30]/4' : ''}`}>
                       <td className="px-6 py-4">
                         <div>
-                          <p className="font-medium text-slate-900">{user.name}</p>
-                          <p className="text-xs text-slate-500">{user.email}</p>
+                          <p className="text-[14px] font-medium text-[#1D1D1F]">{user.name}</p>
+                          <p className="text-[12px] text-[#6E6E73]">{user.email}</p>
                         </div>
                       </td>
                       <td className="px-6 py-4">
@@ -140,20 +140,20 @@ export default function AdminPage() {
                           {user.role}
                         </Badge>
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-600">{user._count.projects}</td>
-                      <td className="px-6 py-4 text-sm text-slate-600">{user._count.clients}</td>
-                      <td className="px-6 py-4 text-sm text-slate-600">{user._count.invoices}</td>
-                      <td className="px-6 py-4 text-sm text-slate-600">
+                      <td className="px-6 py-4 text-[14px] text-[#6E6E73]">{user._count.projects}</td>
+                      <td className="px-6 py-4 text-[14px] text-[#6E6E73]">{user._count.clients}</td>
+                      <td className="px-6 py-4 text-[14px] text-[#6E6E73]">{user._count.invoices}</td>
+                      <td className="px-6 py-4 text-[14px] text-[#6E6E73]">
                         {new Date(user.createdAt).toLocaleDateString()}
                       </td>
                       <td className="px-6 py-4">
                         {user.isBlocked ? (
                           <div className="flex items-center gap-1.5">
-                            <AlertTriangle size={14} className="text-red-500" />
-                            <span className="text-sm text-red-600 font-medium">Blocked</span>
+                            <AlertTriangle size={14} className="text-[#FF3B30]" />
+                            <span className="text-[14px] text-[#FF3B30] font-medium">Blocked</span>
                           </div>
                         ) : (
-                          <span className="text-sm text-green-600 font-medium">Active</span>
+                          <span className="text-[14px] text-[#34C759] font-medium">Active</span>
                         )}
                       </td>
                       <td className="px-6 py-4">

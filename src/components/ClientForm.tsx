@@ -62,9 +62,9 @@ export default function ClientForm({ defaultValues, onSubmit, isLoading, submitL
         {...register('company')}
       />
       <div className="w-full">
-        <label className="block text-sm font-medium text-slate-700 mb-1">Notes</label>
+        <label className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">Notes</label>
         <textarea
-          className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+          className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] placeholder:text-[#AEAEB2] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all resize-none"
           rows={3}
           placeholder="Additional notes..."
           {...register('notes')}

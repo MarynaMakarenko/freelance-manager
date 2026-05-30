@@ -50,24 +50,24 @@ export default function TimerWidget({ activeSession, onStop, isLoading }: TimerW
 
   if (!activeSession) {
     return (
-      <div className="flex items-center gap-3 px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl">
-        <div className="w-3 h-3 rounded-full bg-slate-300" />
-        <span className="text-sm text-slate-500">No active timer</span>
+      <div className="flex items-center gap-3 px-4 py-3 bg-[#F5F5F7] border border-black/[0.06] rounded-xl">
+        <div className="w-3 h-3 rounded-full bg-[#AEAEB2]" />
+        <span className="text-[14px] text-[#6E6E73]">No active timer</span>
       </div>
     )
   }
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 bg-blue-50 border border-blue-200 rounded-xl">
+    <div className="flex items-center justify-between px-4 py-3 bg-[#0066CC]/8 border border-[#0066CC]/20 rounded-xl">
       <div className="flex items-center gap-3">
-        <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+        <div className="w-3 h-3 rounded-full bg-[#34C759] animate-pulse" />
         <div>
-          <p className="text-sm font-semibold text-slate-900">{activeSession.task.name}</p>
-          <p className="text-xs text-slate-500">{activeSession.task.project.name}</p>
+          <p className="text-[14px] font-semibold text-[#1D1D1F]">{activeSession.task.name}</p>
+          <p className="text-[12px] text-[#6E6E73]">{activeSession.task.project.name}</p>
         </div>
       </div>
       <div className="flex items-center gap-4">
-        <span className="text-2xl font-mono font-bold text-blue-700">{formatDuration(elapsed)}</span>
+        <span className="font-mono text-[#1D1D1F] text-2xl font-bold">{formatDuration(elapsed)}</span>
         <Button
           variant="danger"
           size="sm"

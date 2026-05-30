@@ -51,17 +51,17 @@ export default function NewInvoicePage() {
       <div className="flex items-center gap-3">
         <Link
           href="/dashboard/invoices"
-          className="p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+          className="p-2 rounded-[8px] text-[#AEAEB2] hover:text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors"
         >
           <ArrowLeft size={18} />
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">New Invoice</h1>
-          <p className="text-slate-500 mt-1">Create a new invoice for your client</p>
+          <h1 className="text-[28px] font-bold text-[#1D1D1F] tracking-tight">New Invoice</h1>
+          <p className="text-[15px] text-[#6E6E73] mt-1">Create a new invoice for your client</p>
         </div>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+      <div className="bg-white rounded-2xl border border-black/[0.06] shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] p-6">
         <InvoiceForm
           defaultValues={{ number: defaultNumber }}
           clients={clients}
@@ -71,8 +71,8 @@ export default function NewInvoicePage() {
           submitLabel="Create Invoice"
         />
         {createMutation.isError && (
-          <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-            <p className="text-sm text-red-700">{createMutation.error?.message}</p>
+          <div className="mt-4 p-3 bg-[#FF3B30]/8 rounded-[10px]">
+            <p className="text-[13px] text-[#FF3B30]">{createMutation.error?.message}</p>
           </div>
         )}
       </div>

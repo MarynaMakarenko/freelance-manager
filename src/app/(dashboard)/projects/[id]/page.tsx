@@ -121,8 +121,8 @@ export default function ProjectDetailPage() {
   if (!project) {
     return (
       <div className="text-center py-12">
-        <p className="text-slate-500">Project not found</p>
-        <Link href="/dashboard/projects" className="text-blue-600 hover:underline mt-2 inline-block">
+        <p className="text-[14px] text-[#6E6E73]">Project not found</p>
+        <Link href="/dashboard/projects" className="text-[#0066CC] hover:underline mt-2 inline-block">
           Back to Projects
         </Link>
       </div>
@@ -158,25 +158,25 @@ export default function ProjectDetailPage() {
         <div className="flex items-start gap-4">
           <Link
             href="/dashboard/projects"
-            className="p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors mt-1"
+            className="p-2 rounded-[8px] text-[#AEAEB2] hover:text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors mt-1"
           >
             <ArrowLeft size={18} />
           </Link>
           <div>
             <div className="flex items-center gap-3 flex-wrap">
-              <h1 className="text-2xl font-bold text-slate-900">{project.name}</h1>
+              <h1 className="text-[28px] font-bold text-[#1D1D1F] tracking-tight">{project.name}</h1>
               <Badge variant={getStatusBadgeVariant(project.status)} size="md">
                 {project.status.replace('_', ' ')}
               </Badge>
               {project.isArchived && <Badge variant="warning">Archived</Badge>}
             </div>
             {project.client && (
-              <p className="text-slate-500 mt-1">
+              <p className="text-[15px] text-[#6E6E73] mt-1">
                 {project.client.company || project.client.name}
               </p>
             )}
             {project.description && (
-              <p className="text-slate-600 mt-2 max-w-2xl">{project.description}</p>
+              <p className="text-[14px] text-[#6E6E73] mt-2 max-w-2xl">{project.description}</p>
             )}
           </div>
         </div>
@@ -204,32 +204,32 @@ export default function ProjectDetailPage() {
 
       {/* Info cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white border border-slate-200 rounded-xl p-4">
-          <p className="text-xs text-slate-500 mb-1">Budget</p>
-          <p className="text-lg font-bold text-slate-900">${project.budget.toLocaleString()}</p>
+        <div className="bg-white border border-black/[0.06] rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] p-4">
+          <p className="text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider mb-1">Budget</p>
+          <p className="text-[18px] font-bold text-[#1D1D1F]">${project.budget.toLocaleString()}</p>
         </div>
-        <div className="bg-white border border-slate-200 rounded-xl p-4">
-          <p className="text-xs text-slate-500 mb-1">Deadline</p>
-          <p className="text-lg font-bold text-slate-900">
+        <div className="bg-white border border-black/[0.06] rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] p-4">
+          <p className="text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider mb-1">Deadline</p>
+          <p className="text-[18px] font-bold text-[#1D1D1F]">
             {project.deadline ? new Date(project.deadline).toLocaleDateString() : '—'}
           </p>
         </div>
-        <div className="bg-white border border-slate-200 rounded-xl p-4">
-          <p className="text-xs text-slate-500 mb-1">Time Tracked</p>
-          <p className="text-lg font-bold text-slate-900">
+        <div className="bg-white border border-black/[0.06] rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] p-4">
+          <p className="text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider mb-1">Time Tracked</p>
+          <p className="text-[18px] font-bold text-[#1D1D1F]">
             {totalTimeSeconds > 0 ? formatDuration(totalTimeSeconds) : '—'}
           </p>
         </div>
-        <div className="bg-white border border-slate-200 rounded-xl p-4">
-          <p className="text-xs text-slate-500 mb-1">Tasks</p>
-          <p className="text-lg font-bold text-slate-900">{project.tasks.length}</p>
+        <div className="bg-white border border-black/[0.06] rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] p-4">
+          <p className="text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider mb-1">Tasks</p>
+          <p className="text-[18px] font-bold text-[#1D1D1F]">{project.tasks.length}</p>
         </div>
       </div>
 
       {/* Tasks */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-slate-900">Tasks</h2>
+          <h2 className="text-[17px] font-semibold text-[#1D1D1F]">Tasks</h2>
           <Button size="sm" onClick={() => setIsAddTaskOpen(true)}>
             <Plus size={14} />
             Add Task
@@ -237,9 +237,9 @@ export default function ProjectDetailPage() {
         </div>
 
         {project.tasks.length === 0 ? (
-          <div className="text-center py-10 text-slate-400 border border-dashed border-slate-200 rounded-xl">
-            <CheckCircle size={32} className="mx-auto mb-2 opacity-30" />
-            <p>No tasks yet. Add your first task.</p>
+          <div className="text-center py-10 border border-dashed border-black/[0.08] rounded-xl">
+            <CheckCircle size={32} className="mx-auto mb-2 text-[#AEAEB2] opacity-30" />
+            <p className="text-[14px] text-[#6E6E73]">No tasks yet. Add your first task.</p>
           </div>
         ) : (
           <div className="space-y-4">
@@ -248,7 +248,7 @@ export default function ProjectDetailPage() {
               if (statusTasks.length === 0) return null
               return (
                 <div key={status}>
-                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  <p className="text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider mb-2">
                     {status.replace('_', ' ')} ({statusTasks.length})
                   </p>
                   <div className="space-y-2">
@@ -257,30 +257,30 @@ export default function ProjectDetailPage() {
                       return (
                         <div
                           key={task.id}
-                          className="flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-4 py-3"
+                          className="flex items-center gap-3 bg-white border border-black/[0.06] rounded-xl px-4 py-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
                         >
                           <button
                             onClick={() => updateTaskMutation.mutate({ id: task.id, status: statusCycle[task.status] })}
                             className={`flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
                               task.status === 'DONE'
-                                ? 'border-green-500 bg-green-500 text-white'
+                                ? 'border-[#34C759] bg-[#34C759] text-white'
                                 : task.status === 'IN_PROGRESS'
-                                ? 'border-blue-500 bg-blue-50'
-                                : 'border-slate-300 hover:border-blue-400'
+                                ? 'border-[#0066CC] bg-[#0066CC]/10'
+                                : 'border-black/[0.2] hover:border-[#0066CC]'
                             }`}
                           >
                             {task.status === 'DONE' && <CheckCircle size={12} />}
                           </button>
                           <div className="flex-1 min-w-0">
-                            <p className={`text-sm font-medium ${task.status === 'DONE' ? 'line-through text-slate-400' : 'text-slate-900'}`}>
+                            <p className={`text-[14px] font-medium ${task.status === 'DONE' ? 'line-through text-[#AEAEB2]' : 'text-[#1D1D1F]'}`}>
                               {task.name}
                             </p>
                             {task.description && (
-                              <p className="text-xs text-slate-500 truncate">{task.description}</p>
+                              <p className="text-[12px] text-[#6E6E73] truncate">{task.description}</p>
                             )}
                           </div>
                           {taskTime > 0 && (
-                            <div className="flex items-center gap-1 text-xs text-slate-500">
+                            <div className="flex items-center gap-1 text-[12px] text-[#6E6E73]">
                               <Clock size={12} />
                               {formatDuration(taskTime)}
                             </div>
@@ -288,7 +288,7 @@ export default function ProjectDetailPage() {
                           <button
                             onClick={() => startTimerMutation.mutate(task.id)}
                             disabled={startTimerMutation.isPending}
-                            className="p-1.5 text-slate-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
+                            className="p-1.5 text-[#AEAEB2] hover:text-[#34C759] hover:bg-[#34C759]/8 rounded-[8px] transition-colors"
                             title="Start timer"
                           >
                             <Play size={14} />
@@ -297,7 +297,7 @@ export default function ProjectDetailPage() {
                             onClick={() => {
                               if (confirm('Delete this task?')) deleteTaskMutation.mutate(task.id)
                             }}
-                            className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                            className="p-1.5 text-[#AEAEB2] hover:text-[#FF3B30] hover:bg-[#FF3B30]/8 rounded-[8px] transition-colors"
                           >
                             <Trash2 size={14} />
                           </button>
@@ -315,7 +315,7 @@ export default function ProjectDetailPage() {
       {/* Invoices */}
       {project.invoices.length > 0 && (
         <div>
-          <h2 className="text-lg font-semibold text-slate-900 mb-4">Linked Invoices</h2>
+          <h2 className="text-[17px] font-semibold text-[#1D1D1F] mb-4">Linked Invoices</h2>
           <div className="space-y-2">
             {project.invoices.map((invoice) => {
               const total = invoice.items.reduce((s, i) => s + i.amount, 0)
@@ -323,14 +323,14 @@ export default function ProjectDetailPage() {
                 <Link
                   key={invoice.id}
                   href={`/dashboard/invoices/${invoice.id}`}
-                  className="flex items-center justify-between bg-white border border-slate-200 rounded-xl px-4 py-3 hover:shadow-sm transition-shadow"
+                  className="flex items-center justify-between bg-white border border-black/[0.06] rounded-xl px-4 py-3 hover:shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] transition-shadow"
                 >
                   <div className="flex items-center gap-3">
-                    <FileText size={16} className="text-slate-400" />
-                    <span className="font-medium text-slate-900">#{invoice.number}</span>
+                    <FileText size={16} className="text-[#AEAEB2]" />
+                    <span className="text-[14px] font-medium text-[#1D1D1F]">#{invoice.number}</span>
                     <Badge variant={getStatusBadgeVariant(invoice.status)}>{invoice.status}</Badge>
                   </div>
-                  <span className="text-sm font-semibold text-slate-700">${total.toFixed(2)}</span>
+                  <span className="text-[14px] font-medium text-[#1D1D1F]">${total.toFixed(2)}</span>
                 </Link>
               )
             })}
@@ -348,9 +348,9 @@ export default function ProjectDetailPage() {
             onChange={(e) => setTaskName(e.target.value)}
           />
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Description</label>
+            <label className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">Description</label>
             <textarea
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+              className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all resize-none"
               rows={3}
               placeholder="Optional description..."
               value={taskDesc}

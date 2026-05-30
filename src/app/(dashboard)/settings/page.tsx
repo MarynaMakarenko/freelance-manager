@@ -115,14 +115,14 @@ export default function SettingsPage() {
   return (
     <div className="max-w-2xl mx-auto space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Settings</h1>
-        <p className="text-slate-500 mt-1">Manage your account preferences</p>
+        <h1 className="text-[28px] font-bold text-[#1D1D1F] tracking-tight">Settings</h1>
+        <p className="text-[15px] text-[#6E6E73] mt-1">Manage your account preferences</p>
       </div>
 
       {/* Profile */}
       <Card className="p-6">
-        <h2 className="text-lg font-semibold text-slate-900 mb-1">Profile</h2>
-        <p className="text-sm text-slate-500 mb-6">Update your name and currency</p>
+        <h2 className="text-[17px] font-semibold text-[#1D1D1F] mb-1">Profile</h2>
+        <p className="text-[14px] text-[#6E6E73] mb-6">Update your name and currency</p>
 
         <form
           onSubmit={handleProfile(async (data) => {
@@ -138,19 +138,19 @@ export default function SettingsPage() {
           />
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+            <label className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">Email</label>
             <input
               value={user?.email || ''}
               disabled
-              className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm bg-slate-50 text-slate-500"
+              className="w-full bg-[#F5F5F7] rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#AEAEB2] opacity-70"
             />
-            <p className="mt-1 text-xs text-slate-400">Email cannot be changed</p>
+            <p className="mt-1 text-[12px] text-[#AEAEB2]">Email cannot be changed</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Currency</label>
+            <label className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">Currency</label>
             <select
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+              className="w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all"
               {...profileReg('currency')}
             >
               {currencies.map((c) => (
@@ -160,15 +160,15 @@ export default function SettingsPage() {
           </div>
 
           {profileSuccess && (
-            <div className="flex items-center gap-2 p-3 bg-green-50 border border-green-200 rounded-lg">
-              <CheckCircle size={16} className="text-green-600" />
-              <p className="text-sm text-green-700">Profile updated successfully</p>
+            <div className="flex items-center gap-2 p-3 bg-[#34C759]/10 rounded-[10px]">
+              <CheckCircle size={16} className="text-[#1a7a35]" />
+              <p className="text-[13px] text-[#1a7a35]">Profile updated successfully</p>
             </div>
           )}
 
           {updateProfileMutation.isError && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-sm text-red-700">{updateProfileMutation.error?.message}</p>
+            <div className="p-3 bg-[#FF3B30]/8 rounded-[10px]">
+              <p className="text-[13px] text-[#FF3B30]">{updateProfileMutation.error?.message}</p>
             </div>
           )}
 
@@ -180,8 +180,8 @@ export default function SettingsPage() {
 
       {/* Password */}
       <Card className="p-6">
-        <h2 className="text-lg font-semibold text-slate-900 mb-1">Change Password</h2>
-        <p className="text-sm text-slate-500 mb-6">Ensure your account is using a strong password</p>
+        <h2 className="text-[17px] font-semibold text-[#1D1D1F] mb-1">Change Password</h2>
+        <p className="text-[14px] text-[#6E6E73] mb-6">Ensure your account is using a strong password</p>
 
         <form
           onSubmit={handlePassword(async (data) => {
@@ -215,15 +215,15 @@ export default function SettingsPage() {
           />
 
           {passwordSuccess && (
-            <div className="flex items-center gap-2 p-3 bg-green-50 border border-green-200 rounded-lg">
-              <CheckCircle size={16} className="text-green-600" />
-              <p className="text-sm text-green-700">Password changed successfully</p>
+            <div className="flex items-center gap-2 p-3 bg-[#34C759]/10 rounded-[10px]">
+              <CheckCircle size={16} className="text-[#1a7a35]" />
+              <p className="text-[13px] text-[#1a7a35]">Password changed successfully</p>
             </div>
           )}
 
           {updatePasswordMutation.isError && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-sm text-red-700">{updatePasswordMutation.error?.message}</p>
+            <div className="p-3 bg-[#FF3B30]/8 rounded-[10px]">
+              <p className="text-[13px] text-[#FF3B30]">{updatePasswordMutation.error?.message}</p>
             </div>
           )}
 
@@ -235,15 +235,15 @@ export default function SettingsPage() {
 
       {/* Account info */}
       <Card className="p-6">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">Account Information</h2>
+        <h2 className="text-[17px] font-semibold text-[#1D1D1F] mb-4">Account Information</h2>
         <div className="space-y-3">
-          <div className="flex justify-between text-sm">
-            <span className="text-slate-500">Role</span>
-            <span className="font-medium text-slate-900 capitalize">{user?.role?.toLowerCase()}</span>
+          <div className="flex justify-between text-[14px]">
+            <span className="text-[#6E6E73]">Role</span>
+            <span className="font-medium text-[#1D1D1F] capitalize">{user?.role?.toLowerCase()}</span>
           </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-slate-500">User ID</span>
-            <span className="font-mono text-xs text-slate-600">{user?.id}</span>
+          <div className="flex justify-between text-[14px]">
+            <span className="text-[#6E6E73]">User ID</span>
+            <span className="font-mono text-[12px] text-[#6E6E73]">{user?.id}</span>
           </div>
         </div>
       </Card>

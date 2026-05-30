@@ -72,8 +72,8 @@ export default function ClientsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Clients</h1>
-          <p className="text-slate-500 mt-1">{clients.length} total clients</p>
+          <h1 className="text-[28px] font-bold text-[#1D1D1F] tracking-tight">Clients</h1>
+          <p className="text-[15px] text-[#6E6E73] mt-1">{clients.length} total clients</p>
         </div>
         <Button onClick={() => setIsCreateOpen(true)}>
           <Plus size={16} />
@@ -83,12 +83,12 @@ export default function ClientsPage() {
 
       {/* Search */}
       <div className="relative">
-        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#AEAEB2]" />
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search clients..."
-          className="w-full pl-9 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+          className="w-full bg-[#F5F5F7] border-0 rounded-[10px] pl-9 pr-4 py-2.5 text-[14px] text-[#1D1D1F] placeholder:text-[#AEAEB2] focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 transition-all"
         />
       </div>
 
@@ -98,63 +98,63 @@ export default function ClientsPage() {
           <Spinner />
         </div>
       ) : filtered.length === 0 ? (
-        <div className="text-center py-16 text-slate-400">
-          <Users size={48} className="mx-auto mb-4 opacity-30" />
-          <p className="text-lg font-medium text-slate-600">No clients found</p>
-          <p className="text-sm mt-1">Add your first client to get started</p>
+        <div className="text-center py-16">
+          <Users size={48} className="mx-auto mb-4 text-[#AEAEB2] opacity-30" />
+          <p className="text-[16px] font-medium text-[#1D1D1F]">No clients found</p>
+          <p className="text-[14px] text-[#6E6E73] mt-1">Add your first client to get started</p>
         </div>
       ) : (
-        <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <div className="bg-white rounded-2xl border border-black/[0.06] shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-slate-200 bg-slate-50">
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Name</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Company</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Email</th>
-                <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Projects</th>
-                <th className="text-right text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">Actions</th>
+              <tr className="border-b border-black/[0.05] bg-[#FAFAFA]">
+                <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Name</th>
+                <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Company</th>
+                <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Email</th>
+                <th className="text-left text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Projects</th>
+                <th className="text-right text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-wider px-6 py-3">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-black/[0.04]">
               {filtered.map((client) => (
-                <tr key={client.id} className="hover:bg-slate-50 transition-colors">
+                <tr key={client.id} className="hover:bg-[#F5F5F7] transition-colors">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                      <div className="w-8 h-8 rounded-full bg-[#0066CC]/15 text-[#0066CC] flex items-center justify-center text-[13px] font-semibold flex-shrink-0">
                         {client.name.charAt(0).toUpperCase()}
                       </div>
-                      <span className="font-medium text-slate-900">{client.name}</span>
+                      <span className="text-[14px] font-medium text-[#1D1D1F]">{client.name}</span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="flex items-center gap-1.5 text-sm text-slate-600">
+                    <div className="flex items-center gap-1.5 text-[14px] text-[#6E6E73]">
                       {client.company ? (
                         <>
-                          <Building size={14} className="text-slate-400" />
+                          <Building size={14} className="text-[#AEAEB2]" />
                           {client.company}
                         </>
                       ) : (
-                        <span className="text-slate-300">—</span>
+                        <span className="text-[#AEAEB2]">—</span>
                       )}
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-sm text-slate-600">
-                    {client.email || <span className="text-slate-300">—</span>}
+                  <td className="px-6 py-4 text-[14px] text-[#6E6E73]">
+                    {client.email || <span className="text-[#AEAEB2]">—</span>}
                   </td>
                   <td className="px-6 py-4">
-                    <span className="text-sm text-slate-600">{client._count?.projects || 0} projects</span>
+                    <span className="text-[14px] text-[#6E6E73]">{client._count?.projects || 0} projects</span>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center justify-end gap-2">
                       <button
                         onClick={() => setEditClient(client)}
-                        className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                        className="p-1.5 text-[#AEAEB2] hover:text-[#0066CC] hover:bg-[#0066CC]/8 rounded-[8px] transition-colors"
                       >
                         <Edit2 size={15} />
                       </button>
                       <button
                         onClick={() => handleDelete(client)}
-                        className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                        className="p-1.5 text-[#AEAEB2] hover:text-[#FF3B30] hover:bg-[#FF3B30]/8 rounded-[8px] transition-colors"
                         disabled={deleteMutation.isPending}
                       >
                         <Trash2 size={15} />
@@ -175,7 +175,7 @@ export default function ClientsPage() {
           isLoading={createMutation.isPending}
         />
         {createMutation.isError && (
-          <p className="text-sm text-red-600 mt-3">{createMutation.error?.message}</p>
+          <p className="text-[13px] text-[#FF3B30] mt-3">{createMutation.error?.message}</p>
         )}
       </Modal>
 
@@ -196,7 +196,7 @@ export default function ClientsPage() {
           />
         )}
         {updateMutation.isError && (
-          <p className="text-sm text-red-600 mt-3">{updateMutation.error?.message}</p>
+          <p className="text-[13px] text-[#FF3B30] mt-3">{updateMutation.error?.message}</p>
         )}
       </Modal>
     </div>
