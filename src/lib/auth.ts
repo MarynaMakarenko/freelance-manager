@@ -8,7 +8,7 @@ export function generateAccessToken(userId: string, role: string) {
 }
 
 export function generateRefreshToken(userId: string) {
-  return jwt.sign({ userId }, REFRESH_SECRET, { expiresIn: '7d' })
+  return jwt.sign({ userId, jti: crypto.randomUUID() }, REFRESH_SECRET, { expiresIn: '7d' })
 }
 
 export function verifyAccessToken(token: string) {
