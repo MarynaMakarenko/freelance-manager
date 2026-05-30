@@ -36,7 +36,7 @@ export default function LoginPage() {
       const json = await res.json()
       if (!res.ok) { setError(json.error || 'Login failed'); return }
       localStorage.setItem('access_token', json.accessToken)
-      router.push('/dashboard')
+      window.location.href = '/dashboard'
     } catch {
       setError('Network error. Please try again.')
     }

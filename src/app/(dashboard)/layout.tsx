@@ -22,20 +22,26 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   useEffect(() => {
     const token = localStorage.getItem('access_token')
     if (!token) {
-      router.push('/login')
+      window.location.href = '/login'
       return
     }
 
-    apiRequest<UserInfo>('/api/profile')
-      .then((data) => {
+    fetch('/api/profile', {
+      headers: { 'Authorization': `Bearer ${token}` },
+    })
+      .then(async (res) => {
+        if (!res.ok) throw new Error('Unauthorized')
+        return res.json()
+      })
+      .then((data: UserInfo) => {
         setUser(data)
         setLoading(false)
       })
       .catch(() => {
         localStorage.removeItem('access_token')
-        router.push('/login')
+        window.location.href = '/login'
       })
-  }, [router])
+  }, [])
 
   if (loading) {
     return (
