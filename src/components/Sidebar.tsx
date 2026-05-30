@@ -3,27 +3,18 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import {
-  LayoutDashboard,
-  Users,
-  FolderKanban,
-  Timer,
-  FileText,
-  BarChart3,
-  Settings,
-  LogOut,
-  Briefcase,
-  Shield,
+  LayoutDashboard, Users, FolderKanban, Timer,
+  FileText, BarChart3, Settings, LogOut, Shield,
 } from 'lucide-react'
 import { useState } from 'react'
 
 const navItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/dashboard', label: 'Overview', icon: LayoutDashboard },
   { href: '/dashboard/clients', label: 'Clients', icon: Users },
   { href: '/dashboard/projects', label: 'Projects', icon: FolderKanban },
-  { href: '/dashboard/timer', label: 'Timer', icon: Timer },
+  { href: '/dashboard/timer', label: 'Time Tracker', icon: Timer },
   { href: '/dashboard/invoices', label: 'Invoices', icon: FileText },
   { href: '/dashboard/analytics', label: 'Analytics', icon: BarChart3 },
-  { href: '/dashboard/settings', label: 'Settings', icon: Settings },
 ]
 
 interface SidebarProps {
@@ -44,78 +35,102 @@ export default function Sidebar({ userName, userRole }: SidebarProps) {
         method: 'POST',
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       })
-      localStorage.removeItem('access_token')
-      router.push('/login')
-    } catch {
-      localStorage.removeItem('access_token')
-      router.push('/login')
-    }
+    } catch {}
+    localStorage.removeItem('access_token')
+    router.push('/login')
   }
 
   return (
-    <div className="flex flex-col h-full bg-slate-900 text-white w-64 flex-shrink-0">
-      {/* Logo */}
-      <div className="flex items-center gap-3 px-6 py-5 border-b border-slate-700">
-        <div className="p-2 bg-blue-600 rounded-lg">
-          <Briefcase size={20} />
-        </div>
-        <span className="font-bold text-lg">FreelanceManager</span>
+    <div
+      className="flex flex-col h-full bg-white flex-shrink-0 select-none"
+      style={{ width: 240, borderRight: '1px solid rgba(0,0,0,0.07)' }}
+    >
+      {/* App name */}
+      <div className="px-5 pt-6 pb-4">
+        <span className="text-[15px] font-semibold text-[#1D1D1F] tracking-tight">
+          Freelance Manager
+        </span>
       </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+      {/* Nav */}
+      <nav className="flex-1 px-3 py-1 overflow-y-auto space-y-0.5">
+        <p className="px-2 pt-2 pb-1 text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-widest">
+          Workspace
+        </p>
         {navItems.map(({ href, label, icon: Icon }) => {
-          const isActive = pathname === href || (href !== '/dashboard' && pathname.startsWith(href))
+          const isActive =
+            pathname === href ||
+            (href !== '/dashboard' && pathname.startsWith(href))
           return (
             <Link
               key={href}
               href={href}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
+              className={`flex items-center gap-2.5 px-2.5 py-2 rounded-[8px] transition-colors text-[13.5px] font-medium ${
                 isActive
-                  ? 'bg-blue-600 text-white'
-                  : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                  ? 'bg-[rgba(0,102,204,0.09)] text-[#0066CC]'
+                  : 'text-[#3D3D3F] hover:bg-black/[0.04] hover:text-[#1D1D1F]'
               }`}
             >
-              <Icon size={18} />
-              <span className="text-sm font-medium">{label}</span>
+              <Icon size={16} strokeWidth={isActive ? 2.2 : 1.8} />
+              {label}
             </Link>
           )
         })}
 
         {userRole === 'ADMIN' && (
-          <Link
-            href="/admin"
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${
-              pathname.startsWith('/admin')
-                ? 'bg-purple-600 text-white'
-                : 'text-slate-300 hover:bg-slate-800 hover:text-white'
-            }`}
-          >
-            <Shield size={18} />
-            <span className="text-sm font-medium">Admin Panel</span>
-          </Link>
+          <>
+            <p className="px-2 pt-4 pb-1 text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-widest">
+              Admin
+            </p>
+            <Link
+              href="/admin"
+              className={`flex items-center gap-2.5 px-2.5 py-2 rounded-[8px] transition-colors text-[13.5px] font-medium ${
+                pathname.startsWith('/admin')
+                  ? 'bg-[rgba(175,82,222,0.09)] text-[#AF52DE]'
+                  : 'text-[#3D3D3F] hover:bg-black/[0.04] hover:text-[#1D1D1F]'
+              }`}
+            >
+              <Shield size={16} strokeWidth={1.8} />
+              Admin Panel
+            </Link>
+          </>
         )}
+
+        <p className="px-2 pt-4 pb-1 text-[11px] font-semibold text-[#AEAEB2] uppercase tracking-widest">
+          Account
+        </p>
+        <Link
+          href="/dashboard/settings"
+          className={`flex items-center gap-2.5 px-2.5 py-2 rounded-[8px] transition-colors text-[13.5px] font-medium ${
+            pathname === '/dashboard/settings'
+              ? 'bg-[rgba(0,102,204,0.09)] text-[#0066CC]'
+              : 'text-[#3D3D3F] hover:bg-black/[0.04] hover:text-[#1D1D1F]'
+          }`}
+        >
+          <Settings size={16} strokeWidth={1.8} />
+          Settings
+        </Link>
       </nav>
 
-      {/* User info & logout */}
-      <div className="px-3 py-4 border-t border-slate-700">
-        <div className="flex items-center gap-3 px-3 py-2 mb-1">
-          <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold flex-shrink-0">
+      {/* User + logout */}
+      <div className="px-3 pb-4 pt-2" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+        <div className="flex items-center gap-2.5 px-2.5 py-2 rounded-[8px] hover:bg-black/[0.04] transition-colors group">
+          <div className="w-7 h-7 rounded-full bg-[#0066CC] flex items-center justify-center text-[12px] font-semibold text-white flex-shrink-0">
             {userName.charAt(0).toUpperCase()}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-white truncate">{userName}</p>
-            <p className="text-xs text-slate-400 capitalize">{userRole.toLowerCase()}</p>
+            <p className="text-[13px] font-medium text-[#1D1D1F] truncate leading-tight">{userName}</p>
+            <p className="text-[11px] text-[#AEAEB2] capitalize leading-tight">{userRole.toLowerCase()}</p>
           </div>
+          <button
+            onClick={handleLogout}
+            disabled={loggingOut}
+            title="Sign out"
+            className="opacity-0 group-hover:opacity-100 transition-opacity text-[#AEAEB2] hover:text-[#6E6E73] disabled:opacity-30"
+          >
+            <LogOut size={14} />
+          </button>
         </div>
-        <button
-          onClick={handleLogout}
-          disabled={loggingOut}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all disabled:opacity-50"
-        >
-          <LogOut size={18} />
-          <span className="text-sm font-medium">Sign Out</span>
-        </button>
       </div>
     </div>
   )

@@ -11,20 +11,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = 'primary', size = 'md', loading = false, children, className = '', disabled, ...props }, ref) => {
     const baseClasses =
-      'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
+      'inline-flex items-center justify-center font-medium rounded-[10px] transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0066CC]/40 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
 
     const variantClasses = {
-      primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
-      secondary: 'bg-slate-100 text-slate-700 hover:bg-slate-200 focus:ring-slate-400',
-      danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
-      ghost: 'text-slate-600 hover:bg-slate-100 focus:ring-slate-400',
-      outline: 'border border-slate-300 text-slate-700 hover:bg-slate-50 focus:ring-slate-400',
+      primary: 'bg-[#0066CC] hover:bg-[#0055AA] text-white',
+      secondary: 'bg-black/5 hover:bg-black/10 text-[#1D1D1F]',
+      danger: 'bg-[#FF3B30]/10 hover:bg-[#FF3B30]/15 text-[#FF3B30]',
+      ghost: 'text-[#6E6E73] hover:bg-black/5 hover:text-[#1D1D1F]',
+      outline: 'border border-[rgba(0,0,0,0.12)] text-[#1D1D1F] hover:bg-black/[0.03]',
     }
 
     const sizeClasses = {
-      sm: 'text-sm px-3 py-1.5 gap-1.5',
-      md: 'text-sm px-4 py-2 gap-2',
-      lg: 'text-base px-6 py-3 gap-2',
+      sm: 'px-3 py-1.5 text-[13px] gap-1.5',
+      md: 'px-4 py-2 text-[14px] gap-2',
+      lg: 'px-5 py-2.5 text-[15px] font-medium gap-2',
     }
 
     return (

@@ -27,7 +27,7 @@ export default function RootLayout({
         <title>Freelance Manager</title>
         <meta name="description" content="Manage your freelance business — clients, projects, time tracking, and invoices in one place." />
       </head>
-      <body className="bg-slate-50 text-slate-900 h-full">
+      <body className="bg-[#F5F5F7] text-[#1D1D1F] h-full antialiased">
         <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
       </body>
     </html>

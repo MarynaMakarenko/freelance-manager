@@ -15,22 +15,22 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={inputId} className="block text-sm font-medium text-slate-700 mb-1">
+          <label htmlFor={inputId} className="block text-[13px] font-medium text-[#1D1D1F] mb-1.5">
             {label}
           </label>
         )}
         <input
           ref={ref}
           id={inputId}
-          className={`w-full px-3 py-2 border rounded-lg text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+          className={`w-full bg-[#F5F5F7] border-0 rounded-[10px] px-3.5 py-2.5 text-[14px] text-[#1D1D1F] placeholder:text-[#AEAEB2] transition-all focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#0066CC]/30 disabled:opacity-50 ${
             error
-              ? 'border-red-300 bg-red-50 text-red-900 placeholder-red-300'
-              : 'border-slate-300 bg-white text-slate-900 placeholder-slate-400'
-          } disabled:bg-slate-50 disabled:text-slate-500 ${className}`}
+              ? 'bg-[#FF3B30]/5 ring-2 ring-[#FF3B30]/30'
+              : ''
+          } ${className}`}
           {...props}
         />
-        {error && <p className="mt-1 text-xs text-red-600">{error}</p>}
-        {helpText && !error && <p className="mt-1 text-xs text-slate-500">{helpText}</p>}
+        {error && <p className="mt-1 text-[12px] text-[#FF3B30]">{error}</p>}
+        {helpText && !error && <p className="mt-1 text-[12px] text-[#6E6E73]">{helpText}</p>}
       </div>
     )
   }

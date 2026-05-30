@@ -7,17 +7,17 @@ interface BadgeProps {
 
 export default function Badge({ children, variant = 'default', size = 'sm', className = '' }: BadgeProps) {
   const variantClasses = {
-    default: 'bg-slate-100 text-slate-700',
-    success: 'bg-green-100 text-green-700',
-    warning: 'bg-yellow-100 text-yellow-700',
-    danger: 'bg-red-100 text-red-700',
-    info: 'bg-blue-100 text-blue-700',
-    purple: 'bg-purple-100 text-purple-700',
+    default: 'bg-[#F5F5F7] text-[#6E6E73]',
+    success: 'bg-[#34C759]/12 text-[#1a7a35]',
+    warning: 'bg-[#FF9500]/12 text-[#b36a00]',
+    danger: 'bg-[#FF3B30]/10 text-[#cc2e24]',
+    info: 'bg-[#0066CC]/10 text-[#0055AA]',
+    purple: 'bg-[#AF52DE]/12 text-[#7b3aa3]',
   }
 
   const sizeClasses = {
-    sm: 'text-xs px-2 py-0.5',
-    md: 'text-sm px-3 py-1',
+    sm: 'text-[11px] px-2 py-0.5',
+    md: 'text-[13px] px-2.5 py-1',
   }
 
   return (

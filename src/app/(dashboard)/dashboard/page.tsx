@@ -5,6 +5,7 @@ import { FolderKanban, DollarSign, Clock, AlertCircle, Calendar } from 'lucide-r
 import StatsCard from '@/components/StatsCard'
 import ProjectCard from '@/components/ProjectCard'
 import Spinner from '@/components/ui/Spinner'
+import Card from '@/components/ui/Card'
 import { apiRequest } from '@/lib/api'
 
 interface OverviewData {
@@ -50,8 +51,8 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Dashboard</h1>
-        <p className="text-slate-500 mt-1">Your freelance business at a glance</p>
+        <h1 className="text-[28px] font-bold text-[#1D1D1F] tracking-tight">Overview</h1>
+        <p className="text-[15px] text-[#6E6E73] mt-1">Your freelance business at a glance</p>
       </div>
 
       {/* Stats */}
@@ -94,16 +95,16 @@ export default function DashboardPage() {
         {/* Recent Projects */}
         <div className="xl:col-span-2">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-slate-900">Recent Projects</h2>
+            <h2 className="text-[17px] font-semibold text-[#1D1D1F]">Recent Projects</h2>
           </div>
           {projectsLoading ? (
             <div className="flex justify-center py-8">
               <Spinner />
             </div>
           ) : recentProjects.length === 0 ? (
-            <div className="text-center py-12 text-slate-500">
-              <FolderKanban size={40} className="mx-auto mb-3 opacity-30" />
-              <p>No projects yet. Create your first project!</p>
+            <div className="text-center py-12">
+              <FolderKanban size={40} className="mx-auto mb-3 text-[#AEAEB2]" />
+              <p className="text-[14px] text-[#6E6E73]">No projects yet. Create your first project!</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -117,38 +118,35 @@ export default function DashboardPage() {
         {/* Upcoming Deadlines */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-slate-900">Upcoming Deadlines</h2>
+            <h2 className="text-[17px] font-semibold text-[#1D1D1F]">Upcoming Deadlines</h2>
           </div>
           {overviewLoading ? (
             <div className="flex justify-center py-8">
               <Spinner />
             </div>
           ) : (overview?.upcomingDeadlines.length || 0) === 0 ? (
-            <div className="text-center py-12 text-slate-500">
-              <Calendar size={40} className="mx-auto mb-3 opacity-30" />
-              <p className="text-sm">No upcoming deadlines</p>
+            <div className="text-center py-12">
+              <Calendar size={40} className="mx-auto mb-3 text-[#AEAEB2]" />
+              <p className="text-[14px] text-[#6E6E73]">No upcoming deadlines</p>
             </div>
           ) : (
             <div className="space-y-3">
               {overview?.upcomingDeadlines.map((project) => (
-                <div
-                  key={project.id}
-                  className="bg-white border border-slate-200 rounded-xl p-4"
-                >
+                <Card key={project.id} className="p-4">
                   <div className="flex items-start justify-between">
                     <div>
-                      <p className="font-medium text-slate-900 text-sm">{project.name}</p>
+                      <p className="text-[14px] font-medium text-[#1D1D1F]">{project.name}</p>
                       {project.client && (
-                        <p className="text-xs text-slate-500 mt-0.5">{project.client.name}</p>
+                        <p className="text-[12px] text-[#6E6E73] mt-0.5">{project.client.name}</p>
                       )}
                     </div>
                     <div className="text-right">
-                      <p className="text-xs font-medium text-orange-600">
-                        {new Date(project.deadline).toLocaleDateString()}
+                      <p className="text-[12px] font-medium text-[#FF9500]">
+                        {new Date(project.deadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </p>
                     </div>
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
           )}

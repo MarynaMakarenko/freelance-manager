@@ -39,7 +39,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-[#F5F5F7]">
         <Spinner size="lg" />
       </div>
     )
@@ -48,10 +48,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   if (!user) return null
 
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-50">
+    <div className="flex h-screen overflow-hidden bg-[#F5F5F7]">
       <Sidebar userName={user.name} userRole={user.role} />
       <main className="flex-1 overflow-y-auto">
-        <div className="p-6 md:p-8">{children}</div>
+        <div className="p-8 max-w-[1200px] mx-auto">{children}</div>
       </main>
     </div>
   )

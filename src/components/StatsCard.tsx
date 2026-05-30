@@ -10,29 +10,29 @@ interface StatsCardProps {
   color?: 'blue' | 'green' | 'yellow' | 'purple'
 }
 
-export default function StatsCard({ title, value, icon, trend, trendPositive, description, color = 'blue' }: StatsCardProps) {
-  const colorClasses = {
-    blue: 'bg-blue-50 text-blue-600',
-    green: 'bg-green-50 text-green-600',
-    yellow: 'bg-yellow-50 text-yellow-600',
-    purple: 'bg-purple-50 text-purple-600',
-  }
+const iconColors = {
+  blue: 'text-[#0066CC]',
+  green: 'text-[#34C759]',
+  yellow: 'text-[#FF9500]',
+  purple: 'text-[#AF52DE]',
+}
 
+export default function StatsCard({ title, value, icon, trend, trendPositive, description, color = 'blue' }: StatsCardProps) {
   return (
-    <Card className="p-6">
-      <div className="flex items-start justify-between">
-        <div className="flex-1">
-          <p className="text-sm font-medium text-slate-500 mb-1">{title}</p>
-          <p className="text-2xl font-bold text-slate-900">{value}</p>
-          {trend && (
-            <p className={`text-xs mt-1 ${trendPositive ? 'text-green-600' : 'text-red-600'}`}>
-              {trend}
-            </p>
-          )}
-          {description && <p className="text-xs text-slate-500 mt-1">{description}</p>}
-        </div>
-        <div className={`p-3 rounded-xl ${colorClasses[color]}`}>{icon}</div>
+    <Card className="p-5">
+      <div className="flex items-start justify-between mb-3">
+        <span className={`${iconColors[color]}`}>{icon}</span>
       </div>
+      <p className="text-[28px] font-bold text-[#1D1D1F] leading-none tracking-tight mb-1">{value}</p>
+      <p className="text-[13px] font-medium text-[#6E6E73]">{title}</p>
+      {trend && (
+        <p className={`text-[12px] mt-1 font-medium ${trendPositive ? 'text-[#34C759]' : 'text-[#FF3B30]'}`}>
+          {trend}
+        </p>
+      )}
+      {description && !trend && (
+        <p className="text-[12px] text-[#AEAEB2] mt-0.5">{description}</p>
+      )}
     </Card>
   )
 }
