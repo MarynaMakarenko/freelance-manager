@@ -97,7 +97,7 @@ export default function ProjectDetailPage() {
 
   const startTimerMutation = useMutation({
     mutationFn: (taskId: string) => apiRequest('/api/timer/start', { method: 'POST', body: { taskId } }),
-    onSuccess: () => router.push('/dashboard/timer'),
+    onSuccess: () => router.push('/timer'),
   })
 
   const archiveMutation = useMutation({
@@ -107,7 +107,7 @@ export default function ProjectDetailPage() {
 
   const deleteMutation = useMutation({
     mutationFn: () => apiRequest(`/api/projects/${params.id}`, { method: 'DELETE' }),
-    onSuccess: () => router.push('/dashboard/projects'),
+    onSuccess: () => router.push('/projects'),
   })
 
   if (isLoading) {
@@ -122,7 +122,7 @@ export default function ProjectDetailPage() {
     return (
       <div className="text-center py-12">
         <p className="text-[14px] text-[#6E6E73]">Project not found</p>
-        <Link href="/dashboard/projects" className="text-[#0066CC] hover:underline mt-2 inline-block">
+        <Link href="/projects" className="text-[#0066CC] hover:underline mt-2 inline-block">
           Back to Projects
         </Link>
       </div>
@@ -157,7 +157,7 @@ export default function ProjectDetailPage() {
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-4">
           <Link
-            href="/dashboard/projects"
+            href="/projects"
             className="p-2 rounded-[8px] text-[#AEAEB2] hover:text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors mt-1"
           >
             <ArrowLeft size={18} />
@@ -322,7 +322,7 @@ export default function ProjectDetailPage() {
               return (
                 <Link
                   key={invoice.id}
-                  href={`/dashboard/invoices/${invoice.id}`}
+                  href={`/invoices/${invoice.id}`}
                   className="flex items-center justify-between bg-white border border-black/[0.06] rounded-xl px-4 py-3 hover:shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_16px_rgba(0,0,0,0.05)] transition-shadow"
                 >
                   <div className="flex items-center gap-3">

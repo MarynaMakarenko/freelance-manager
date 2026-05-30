@@ -21,7 +21,7 @@ export default function ProjectCard({ project, currency = 'USD' }: ProjectCardPr
   const isOverdue = deadlineDate && deadlineDate < new Date() && project.status !== 'COMPLETED'
 
   return (
-    <Link href={`/dashboard/projects/${project.id}`}>
+    <Link href={`/projects/${project.id}`}>
       <Card hover className="p-5">
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex-1 min-w-0">

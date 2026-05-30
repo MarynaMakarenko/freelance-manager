@@ -10,11 +10,11 @@ import { useState } from 'react'
 
 const navItems = [
   { href: '/dashboard', label: 'Overview', icon: LayoutDashboard },
-  { href: '/dashboard/clients', label: 'Clients', icon: Users },
-  { href: '/dashboard/projects', label: 'Projects', icon: FolderKanban },
-  { href: '/dashboard/timer', label: 'Time Tracker', icon: Timer },
-  { href: '/dashboard/invoices', label: 'Invoices', icon: FileText },
-  { href: '/dashboard/analytics', label: 'Analytics', icon: BarChart3 },
+  { href: '/clients', label: 'Clients', icon: Users },
+  { href: '/projects', label: 'Projects', icon: FolderKanban },
+  { href: '/timer', label: 'Time Tracker', icon: Timer },
+  { href: '/invoices', label: 'Invoices', icon: FileText },
+  { href: '/analytics', label: 'Analytics', icon: BarChart3 },
 ]
 
 interface SidebarProps {
@@ -100,9 +100,9 @@ export default function Sidebar({ userName, userRole }: SidebarProps) {
           Account
         </p>
         <Link
-          href="/dashboard/settings"
+          href="/settings"
           className={`flex items-center gap-2.5 px-2.5 py-2 rounded-[8px] transition-colors text-[13.5px] font-medium ${
-            pathname === '/dashboard/settings'
+            pathname === '/settings'
               ? 'bg-[rgba(0,102,204,0.09)] text-[#0066CC]'
               : 'text-[#3D3D3F] hover:bg-black/[0.04] hover:text-[#1D1D1F]'
           }`}

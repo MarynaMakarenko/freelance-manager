@@ -42,7 +42,7 @@ export default function NewInvoicePage() {
     mutationFn: (data: unknown) =>
       apiRequest<{ id: string }>('/api/invoices', { method: 'POST', body: data }),
     onSuccess: (invoice) => {
-      router.push(`/dashboard/invoices/${invoice.id}`)
+      router.push(`/invoices/${invoice.id}`)
     },
   })
 
@@ -50,7 +50,7 @@ export default function NewInvoicePage() {
     <div className="max-w-3xl mx-auto space-y-6">
       <div className="flex items-center gap-3">
         <Link
-          href="/dashboard/invoices"
+          href="/invoices"
           className="p-2 rounded-[8px] text-[#AEAEB2] hover:text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors"
         >
           <ArrowLeft size={18} />

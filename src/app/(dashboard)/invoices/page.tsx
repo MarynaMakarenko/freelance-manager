@@ -57,7 +57,7 @@ export default function InvoicesPage() {
           <h1 className="text-[28px] font-bold text-[#1D1D1F] tracking-tight">Invoices</h1>
           <p className="text-[15px] text-[#6E6E73] mt-1">{invoices.length} invoices</p>
         </div>
-        <Link href="/dashboard/invoices/new">
+        <Link href="/invoices/new">
           <Button>
             <Plus size={16} />
             New Invoice
@@ -134,7 +134,7 @@ export default function InvoicesPage() {
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center justify-end gap-1">
-                        <Link href={`/dashboard/invoices/${invoice.id}`}>
+                        <Link href={`/invoices/${invoice.id}`}>
                           <button className="p-1.5 text-[#AEAEB2] hover:text-[#0066CC] hover:bg-[#0066CC]/8 rounded-[8px] transition-colors">
                             <Eye size={14} />
                           </button>

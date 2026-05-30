@@ -57,7 +57,7 @@ export default function InvoiceDetailPage() {
 
   const deleteMutation = useMutation({
     mutationFn: () => apiRequest(`/api/invoices/${params.id}`, { method: 'DELETE' }),
-    onSuccess: () => router.push('/dashboard/invoices'),
+    onSuccess: () => router.push('/invoices'),
   })
 
   const handleExportPdf = async () => {
@@ -150,7 +150,7 @@ export default function InvoiceDetailPage() {
     return (
       <div className="text-center py-12">
         <p className="text-[14px] text-[#6E6E73]">Invoice not found</p>
-        <Link href="/dashboard/invoices" className="text-[#0066CC] hover:underline mt-2 inline-block">
+        <Link href="/invoices" className="text-[#0066CC] hover:underline mt-2 inline-block">
           Back to Invoices
         </Link>
       </div>
@@ -164,7 +164,7 @@ export default function InvoiceDetailPage() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Link
-            href="/dashboard/invoices"
+            href="/invoices"
             className="p-2 rounded-[8px] text-[#AEAEB2] hover:text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors"
           >
             <ArrowLeft size={18} />
