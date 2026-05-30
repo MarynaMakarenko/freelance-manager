@@ -178,11 +178,6 @@ prisma/
 
 ---
 
-## Screenshots
-
-> Screenshots will be added here after the first deployment.
-
----
 
 ## License
 
