@@ -61,6 +61,14 @@ export async function POST(req: NextRequest) {
       maxAge: 7 * 24 * 60 * 60,
       path: '/',
     })
+    // also set access token in cookie so middleware can verify it on page navigation
+    response.cookies.set('access_token', accessToken, {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 15 * 60,
+      path: '/',
+    })
 
     return response
   } catch (error) {
